@@ -442,7 +442,448 @@ export const section4PracticeTime: ReactElement[] = [
                 id="para-practice-congratulations"
                 blockId="practice-congratulations"
             >
-                You are doing great! Remember, addition is just putting things together. Keep practicing and you will become an addition expert!
+                You are doing great! Now let us try some fun activities!
+            </EditableParagraph>
+        </Block>
+    </StackLayout>,
+];
+
+// ─────────────────────────────────────────
+// Counting Challenge Game Visualization
+// ─────────────────────────────────────────
+function CountingChallengeGame() {
+    const stars = useVar("challengeStars", 2) as number;
+    const hearts = useVar("challengeHearts", 3) as number;
+
+    // Star emoji positions
+    const starPositions = Array.from({ length: stars }, (_, i) => ({
+        x: 50 + i * 55,
+        y: 70,
+    }));
+
+    // Heart emoji positions
+    const heartPositions = Array.from({ length: hearts }, (_, i) => ({
+        x: 50 + i * 55,
+        y: 150,
+    }));
+
+    return (
+        <div className="relative">
+            <svg
+                width="100%"
+                height={260}
+                viewBox="0 0 380 260"
+                className="bg-gradient-to-b from-amber-50 to-pink-50 rounded-xl border-2 border-amber-200"
+            >
+                {/* Title */}
+                <text
+                    x={190}
+                    y={30}
+                    fontSize={18}
+                    fontWeight="bold"
+                    fill="#78350f"
+                    textAnchor="middle"
+                >
+                    Count the shapes!
+                </text>
+
+                {/* Stars row label */}
+                <text x={20} y={75} fontSize={14} fill="#f59e0b" fontWeight="bold">
+                    ⭐
+                </text>
+
+                {/* Draw stars */}
+                {starPositions.map((pos, i) => (
+                    <text
+                        key={`star-${i}`}
+                        x={pos.x}
+                        y={pos.y}
+                        fontSize={36}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                    >
+                        ⭐
+                    </text>
+                ))}
+
+                {/* Star count */}
+                <text
+                    x={340}
+                    y={75}
+                    fontSize={20}
+                    fontWeight="bold"
+                    fill="#f59e0b"
+                    textAnchor="middle"
+                >
+                    {stars}
+                </text>
+
+                {/* Plus sign */}
+                <text
+                    x={190}
+                    y={115}
+                    fontSize={28}
+                    fontWeight="bold"
+                    fill="#64748b"
+                    textAnchor="middle"
+                >
+                    +
+                </text>
+
+                {/* Hearts row label */}
+                <text x={20} y={155} fontSize={14} fill="#ec4899" fontWeight="bold">
+                    💖
+                </text>
+
+                {/* Draw hearts */}
+                {heartPositions.map((pos, i) => (
+                    <text
+                        key={`heart-${i}`}
+                        x={pos.x}
+                        y={pos.y}
+                        fontSize={36}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                    >
+                        💖
+                    </text>
+                ))}
+
+                {/* Heart count */}
+                <text
+                    x={340}
+                    y={155}
+                    fontSize={20}
+                    fontWeight="bold"
+                    fill="#ec4899"
+                    textAnchor="middle"
+                >
+                    {hearts}
+                </text>
+
+                {/* Divider line */}
+                <line
+                    x1={30}
+                    y1={190}
+                    x2={350}
+                    y2={190}
+                    stroke="#d97706"
+                    strokeWidth={3}
+                    strokeDasharray="8,4"
+                />
+
+                {/* Total label */}
+                <text
+                    x={190}
+                    y={230}
+                    fontSize={18}
+                    fontWeight="bold"
+                    fill="#78350f"
+                    textAnchor="middle"
+                >
+                    How many shapes altogether?
+                </text>
+            </svg>
+        </div>
+    );
+}
+
+// ─────────────────────────────────────────
+// Number Line Jumping Visualization
+// ─────────────────────────────────────────
+function NumberLineJumping() {
+    const start = useVar("jumpStart", 2) as number;
+    const jumpAmount = useVar("jumpAmount", 3) as number;
+    const end = start + jumpAmount;
+
+    // Number line positions
+    const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const lineStart = 30;
+    const lineEnd = 370;
+    const lineY = 120;
+    const spacing = (lineEnd - lineStart) / 10;
+
+    return (
+        <div className="relative">
+            <svg
+                width="100%"
+                height={220}
+                viewBox="0 0 400 220"
+                className="bg-gradient-to-b from-green-50 to-blue-50 rounded-xl border-2 border-green-200"
+            >
+                {/* Title */}
+                <text
+                    x={200}
+                    y={25}
+                    fontSize={16}
+                    fontWeight="bold"
+                    fill="#166534"
+                    textAnchor="middle"
+                >
+                    Watch the frog jump!
+                </text>
+
+                {/* Number line */}
+                <line
+                    x1={lineStart}
+                    y1={lineY}
+                    x2={lineEnd}
+                    y2={lineY}
+                    stroke="#374151"
+                    strokeWidth={3}
+                />
+
+                {/* Tick marks and numbers */}
+                {numbers.map((num) => {
+                    const x = lineStart + num * spacing;
+                    const isStart = num === start;
+                    const isEnd = num === end && end <= 10;
+                    return (
+                        <g key={num}>
+                            <line
+                                x1={x}
+                                y1={lineY - 8}
+                                x2={x}
+                                y2={lineY + 8}
+                                stroke="#374151"
+                                strokeWidth={2}
+                            />
+                            <text
+                                x={x}
+                                y={lineY + 28}
+                                fontSize={14}
+                                fontWeight={isStart || isEnd ? "bold" : "normal"}
+                                fill={isStart ? "#22c55e" : isEnd ? "#3b82f6" : "#374151"}
+                                textAnchor="middle"
+                            >
+                                {num}
+                            </text>
+                            {isStart && (
+                                <circle cx={x} cy={lineY} r={8} fill="#22c55e" />
+                            )}
+                            {isEnd && end <= 10 && (
+                                <circle cx={x} cy={lineY} r={8} fill="#3b82f6" />
+                            )}
+                        </g>
+                    );
+                })}
+
+                {/* Jump arcs */}
+                {Array.from({ length: Math.min(jumpAmount, 10 - start) }, (_, i) => {
+                    const fromX = lineStart + (start + i) * spacing;
+                    const toX = lineStart + (start + i + 1) * spacing;
+                    const midX = (fromX + toX) / 2;
+                    return (
+                        <g key={`jump-${i}`}>
+                            <path
+                                d={`M ${fromX} ${lineY - 10} Q ${midX} ${lineY - 45} ${toX} ${lineY - 10}`}
+                                fill="none"
+                                stroke="#22c55e"
+                                strokeWidth={2}
+                                strokeDasharray="4,2"
+                            />
+                            <text
+                                x={midX}
+                                y={lineY - 50}
+                                fontSize={16}
+                                textAnchor="middle"
+                            >
+                                🐸
+                            </text>
+                        </g>
+                    );
+                })}
+
+                {/* Frog at start */}
+                <text
+                    x={lineStart + start * spacing}
+                    y={lineY - 25}
+                    fontSize={28}
+                    textAnchor="middle"
+                >
+                    🐸
+                </text>
+
+                {/* Landing spot */}
+                {end <= 10 && (
+                    <text
+                        x={lineStart + end * spacing}
+                        y={lineY + 55}
+                        fontSize={20}
+                        textAnchor="middle"
+                    >
+                        🎯
+                    </text>
+                )}
+
+                {/* Instruction */}
+                <text
+                    x={200}
+                    y={195}
+                    fontSize={14}
+                    fill="#374151"
+                    textAnchor="middle"
+                >
+                    Start at {start}, jump {jumpAmount} times. Where does the frog land?
+                </text>
+            </svg>
+        </div>
+    );
+}
+
+// Reactive total for counting challenge
+function ChallengeTotal() {
+    const stars = useVar("challengeStars", 2) as number;
+    const hearts = useVar("challengeHearts", 3) as number;
+    return <span className="font-bold text-purple-600">{stars + hearts}</span>;
+}
+
+// Reactive total for number line
+function JumpTotal() {
+    const start = useVar("jumpStart", 2) as number;
+    const jumpAmount = useVar("jumpAmount", 3) as number;
+    return <span className="font-bold text-blue-600">{start + jumpAmount}</span>;
+}
+
+// ─────────────────────────────────────────
+// SECTION 5: Counting Challenge Game
+// ─────────────────────────────────────────
+export const section5CountingChallenge: ReactElement[] = [
+    <StackLayout key="layout-challenge-heading" maxWidth="xl">
+        <Block id="challenge-heading" padding="md">
+            <EditableH2 id="h2-challenge-heading" blockId="challenge-heading">
+                Counting Challenge Game
+            </EditableH2>
+        </Block>
+    </StackLayout>,
+
+    <StackLayout key="layout-challenge-intro" maxWidth="xl">
+        <Block id="challenge-intro" padding="sm">
+            <EditableParagraph id="para-challenge-intro" blockId="challenge-intro">
+                Let us play a counting game! Count the stars and hearts, then add them together to find the total.
+            </EditableParagraph>
+        </Block>
+    </StackLayout>,
+
+    <SplitLayout key="layout-challenge-game" ratio="1:1" gap="lg">
+        <Block id="challenge-visualization" padding="sm" hasVisualization>
+            <CountingChallengeGame />
+        </Block>
+        <div className="space-y-4">
+            <Block id="challenge-controls" padding="sm">
+                <EditableParagraph
+                    id="para-challenge-controls"
+                    blockId="challenge-controls"
+                >
+                    There are{" "}
+                    <InlineScrubbleNumber
+                        varName="challengeStars"
+                        {...numberPropsFromDefinition(getVariableInfo("challengeStars"))}
+                    />{" "}
+                    stars and{" "}
+                    <InlineScrubbleNumber
+                        varName="challengeHearts"
+                        {...numberPropsFromDefinition(getVariableInfo("challengeHearts"))}
+                    />{" "}
+                    hearts. Can you count them all?
+                </EditableParagraph>
+            </Block>
+            <Block id="challenge-question" padding="sm">
+                <EditableParagraph
+                    id="para-challenge-question"
+                    blockId="challenge-question"
+                >
+                    The total number of shapes is <ChallengeTotal />. Change the numbers above and watch the shapes appear and disappear!
+                </EditableParagraph>
+            </Block>
+        </div>
+    </SplitLayout>,
+];
+
+// ─────────────────────────────────────────
+// SECTION 6: Number Line Jumping
+// ─────────────────────────────────────────
+export const section6NumberLineJumping: ReactElement[] = [
+    <StackLayout key="layout-jump-heading" maxWidth="xl">
+        <Block id="jump-heading" padding="md">
+            <EditableH2 id="h2-jump-heading" blockId="jump-heading">
+                Number Line Jumping
+            </EditableH2>
+        </Block>
+    </StackLayout>,
+
+    <StackLayout key="layout-jump-intro" maxWidth="xl">
+        <Block id="jump-intro" padding="sm">
+            <EditableParagraph id="para-jump-intro" blockId="jump-intro">
+                Here is another fun way to think about addition! Imagine a frog jumping along a number line. Each jump moves the frog forward by one.
+            </EditableParagraph>
+        </Block>
+    </StackLayout>,
+
+    <SplitLayout key="layout-jump-game" ratio="1:1" gap="lg">
+        <Block id="jump-visualization" padding="sm" hasVisualization>
+            <NumberLineJumping />
+        </Block>
+        <div className="space-y-4">
+            <Block id="jump-controls" padding="sm">
+                <EditableParagraph id="para-jump-controls" blockId="jump-controls">
+                    The frog starts at{" "}
+                    <InlineScrubbleNumber
+                        varName="jumpStart"
+                        {...numberPropsFromDefinition(getVariableInfo("jumpStart"))}
+                    />{" "}
+                    and makes{" "}
+                    <InlineScrubbleNumber
+                        varName="jumpAmount"
+                        {...numberPropsFromDefinition(getVariableInfo("jumpAmount"))}
+                    />{" "}
+                    jumps forward.
+                </EditableParagraph>
+            </Block>
+            <Block id="jump-result" padding="sm">
+                <EditableParagraph id="para-jump-result" blockId="jump-result">
+                    After jumping, the frog lands on <JumpTotal />! Try changing where the frog starts or how many times it jumps.
+                </EditableParagraph>
+            </Block>
+            <Block id="jump-question" padding="sm">
+                <EditableParagraph id="para-jump-question" blockId="jump-question">
+                    If the frog starts at 4 and jumps 5 times, where will it land? 4 + 5 ={" "}
+                    <InlineFeedback
+                        varName="jumpAnswer"
+                        correctValue="9"
+                        position="terminal"
+                        successMessage="You got it! The frog lands on 9"
+                        failureMessage="Not quite."
+                        hint="Start at 4 and count 5 more"
+                    >
+                        <InlineClozeInput
+                            varName="jumpAnswer"
+                            correctAnswer="9"
+                            {...clozePropsFromDefinition(getVariableInfo("jumpAnswer"))}
+                        />
+                    </InlineFeedback>.
+                </EditableParagraph>
+            </Block>
+        </div>
+    </SplitLayout>,
+];
+
+// ─────────────────────────────────────────
+// SECTION 7: Fun Finish
+// ─────────────────────────────────────────
+export const section7FunFinish: ReactElement[] = [
+    <StackLayout key="layout-finish-heading" maxWidth="xl">
+        <Block id="finish-heading" padding="md">
+            <EditableH2 id="h2-finish-heading" blockId="finish-heading">
+                You Did It!
+            </EditableH2>
+        </Block>
+    </StackLayout>,
+
+    <StackLayout key="layout-finish-message" maxWidth="xl">
+        <Block id="finish-message" padding="sm">
+            <EditableParagraph id="para-finish-message" blockId="finish-message">
+                Congratulations! You have learned how to add numbers together. Remember, addition is just putting things together to find out how many you have in total. Keep practicing and you will become an addition superstar!
             </EditableParagraph>
         </Block>
     </StackLayout>,
@@ -456,4 +897,7 @@ export const additionLessonBlocks: ReactElement[] = [
     ...section2SeeItInAction,
     ...section3ThePlusSign,
     ...section4PracticeTime,
+    ...section5CountingChallenge,
+    ...section6NumberLineJumping,
+    ...section7FunFinish,
 ];

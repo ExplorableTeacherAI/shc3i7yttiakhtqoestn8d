@@ -161,6 +161,85 @@ export const variableDefinitions: Record<string, VariableDefinition> = {
         options: ['taking away', 'putting together', 'dividing'],
         color: '#22c55e',
     },
+
+    // ─────────────────────────────────────────
+    // COUNTING CHALLENGE GAME VARIABLES
+    // ─────────────────────────────────────────
+    challengeStars: {
+        defaultValue: 2,
+        type: 'number',
+        label: 'Stars Count',
+        description: 'Number of stars in the counting challenge',
+        min: 1,
+        max: 5,
+        step: 1,
+        color: '#f59e0b',
+    },
+    challengeHearts: {
+        defaultValue: 3,
+        type: 'number',
+        label: 'Hearts Count',
+        description: 'Number of hearts in the counting challenge',
+        min: 1,
+        max: 5,
+        step: 1,
+        color: '#ec4899',
+    },
+    challengeAnswer: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Challenge Answer',
+        description: 'Student answer for the counting challenge',
+        placeholder: '?',
+        correctAnswer: '5',
+        color: '#8b5cf6',
+    },
+
+    // ─────────────────────────────────────────
+    // NUMBER LINE JUMPING VARIABLES
+    // ─────────────────────────────────────────
+    jumpStart: {
+        defaultValue: 2,
+        type: 'number',
+        label: 'Starting Number',
+        description: 'Where the frog starts on the number line',
+        min: 0,
+        max: 5,
+        step: 1,
+        color: '#22c55e',
+    },
+    jumpAmount: {
+        defaultValue: 3,
+        type: 'number',
+        label: 'Jump Amount',
+        description: 'How many spaces the frog jumps',
+        min: 1,
+        max: 5,
+        step: 1,
+        color: '#3b82f6',
+    },
+    jumpAnswer: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Jump Answer',
+        description: 'Student answer for where the frog lands',
+        placeholder: '?',
+        correctAnswer: '9',
+        color: '#8b5cf6',
+    },
+
+    // ─────────────────────────────────────────
+    // STORY PROBLEM VARIABLES
+    // ─────────────────────────────────────────
+    storyAnswer: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Story Answer',
+        description: 'Student answer for the interactive story problem',
+        placeholder: '?',
+        correctAnswer: '9',
+        color: '#8b5cf6',
+    },
 };
 
 /**
