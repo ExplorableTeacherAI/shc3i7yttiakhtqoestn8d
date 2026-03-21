@@ -78,83 +78,89 @@ export interface VariableDefinition {
  */
 export const variableDefinitions: Record<string, VariableDefinition> = {
     // ========================================
-    // ADD YOUR VARIABLES HERE
+    // ADDITION LESSON VARIABLES
     // ========================================
 
-    // Uncomment and modify these examples for your lesson:
-
-    /*
     // ─────────────────────────────────────────
-    // NUMBER - Use with sliders
+    // NUMBER - First group of circles
     // ─────────────────────────────────────────
-    myValue: {
-        defaultValue: 5,
+    firstNumber: {
+        defaultValue: 3,
         type: 'number',
-        label: 'My Value',
-        description: 'A number that controls something',
-        unit: 'm',           // optional unit display
-        min: 0,
-        max: 10,
-        step: 0.5,
+        label: 'First Number',
+        description: 'The first number to add (red circles)',
+        min: 1,
+        max: 5,
+        step: 1,
+        color: '#ef4444',
     },
 
     // ─────────────────────────────────────────
-    // TEXT - Free text input
+    // NUMBER - Second group of circles
     // ─────────────────────────────────────────
-    lessonTitle: {
-        defaultValue: 'My Lesson',
+    secondNumber: {
+        defaultValue: 2,
+        type: 'number',
+        label: 'Second Number',
+        description: 'The second number to add (blue circles)',
+        min: 1,
+        max: 5,
+        step: 1,
+        color: '#3b82f6',
+    },
+
+    // ─────────────────────────────────────────
+    // TEXT (cloze) - Practice question 1 answer
+    // ─────────────────────────────────────────
+    practiceAnswer1: {
+        defaultValue: '',
         type: 'text',
-        label: 'Lesson Title',
-        description: 'The title of your lesson',
-        placeholder: 'Enter a title...',
+        label: 'Practice Answer 1',
+        description: 'Student answer for 2 + 3',
+        placeholder: '?',
+        correctAnswer: '5',
+        color: '#8b5cf6',
     },
 
     // ─────────────────────────────────────────
-    // SELECT - Dropdown with options
+    // TEXT (cloze) - Practice question 2 answer
     // ─────────────────────────────────────────
-    difficulty: {
-        defaultValue: 'medium',
+    practiceAnswer2: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Practice Answer 2',
+        description: 'Student answer for 4 + 1',
+        placeholder: '?',
+        correctAnswer: '5',
+        color: '#8b5cf6',
+    },
+
+    // ─────────────────────────────────────────
+    // TEXT (cloze) - Practice question 3 answer
+    // ─────────────────────────────────────────
+    practiceAnswer3: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Practice Answer 3',
+        description: 'Student answer for 1 + 4',
+        placeholder: '?',
+        correctAnswer: '5',
+        color: '#8b5cf6',
+    },
+
+    // ─────────────────────────────────────────
+    // SELECT (cloze choice) - Understanding question
+    // ─────────────────────────────────────────
+    understandingAnswer: {
+        defaultValue: '',
         type: 'select',
-        label: 'Difficulty',
-        description: 'The difficulty level of the lesson',
-        options: ['easy', 'medium', 'hard', 'expert'],
+        label: 'Understanding Answer',
+        description: 'Student answer for what addition does',
+        placeholder: '???',
+        correctAnswer: 'putting together',
+        options: ['taking away', 'putting together', 'dividing'],
+        color: '#22c55e',
     },
-
-    // ─────────────────────────────────────────
-    // BOOLEAN - Toggle switch
-    // ─────────────────────────────────────────
-    showHints: {
-        defaultValue: true,
-        type: 'boolean',
-        label: 'Show Hints',
-        description: 'Toggle to show or hide hints',
-    },
-
-    // ─────────────────────────────────────────
-    // ARRAY - List of numbers
-    // ─────────────────────────────────────────
-    dataPoints: {
-        defaultValue: [1, 4, 9, 16, 25],
-        type: 'array',
-        label: 'Data Points',
-        description: 'Y-values for plotting a graph',
-    },
-
-    // ─────────────────────────────────────────
-    // OBJECT - Complex structured data
-    // ─────────────────────────────────────────
-    graphSettings: {
-        defaultValue: { 
-            xMin: -10, 
-            xMax: 10, 
-            showGrid: true 
-        },
-        type: 'object',
-        label: 'Graph Settings',
-        description: 'Configuration for the graph display',
-        schema: '{ xMin: number, xMax: number, showGrid: boolean }',
-    },
-    */
 };
 
 /**
