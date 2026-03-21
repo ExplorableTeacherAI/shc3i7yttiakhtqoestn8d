@@ -367,18 +367,18 @@ export const section4PracticeTime: ReactElement[] = [
                 id="para-practice-question-one"
                 blockId="practice-question-one"
             >
-                If you have 2 apples and someone gives you 3 more apples, how many apples do you have now? 2 + 3 ={" "}
+                If you have 2 cookies and your friend gives you 4 more cookies, how many cookies do you have now? 2 + 4 ={" "}
                 <InlineFeedback
                     varName="practiceAnswer1"
-                    correctValue="5"
+                    correctValue="6"
                     position="terminal"
-                    successMessage="Wonderful! 2 + 3 = 5. You now have 5 apples"
+                    successMessage="Wonderful! 2 + 4 = 6. You now have 6 cookies"
                     failureMessage="Almost!"
-                    hint="Count 2 apples, then count 3 more"
+                    hint="Count 2 cookies, then count 4 more"
                 >
                     <InlineClozeInput
                         varName="practiceAnswer1"
-                        correctAnswer="5"
+                        correctAnswer="6"
                         {...clozePropsFromDefinition(getVariableInfo("practiceAnswer1"))}
                     />
                 </InlineFeedback>.
@@ -392,18 +392,18 @@ export const section4PracticeTime: ReactElement[] = [
                 id="para-practice-question-two"
                 blockId="practice-question-two"
             >
-                You see 4 birds on a tree. Then 1 more bird comes. How many birds are there now? 4 + 1 ={" "}
+                You see 3 birds on a tree. Then 5 more birds fly over and sit on the tree. How many birds are there now? 3 + 5 ={" "}
                 <InlineFeedback
                     varName="practiceAnswer2"
-                    correctValue="5"
+                    correctValue="8"
                     position="terminal"
-                    successMessage="Great job! 4 + 1 = 5. There are 5 birds"
+                    successMessage="Great job! 3 + 5 = 8. There are 8 birds"
                     failureMessage="Try again!"
-                    hint="Start with 4 and add 1 more"
+                    hint="Start with 3 and add 5 more"
                 >
                     <InlineClozeInput
                         varName="practiceAnswer2"
-                        correctAnswer="5"
+                        correctAnswer="8"
                         {...clozePropsFromDefinition(getVariableInfo("practiceAnswer2"))}
                     />
                 </InlineFeedback>.
@@ -417,18 +417,18 @@ export const section4PracticeTime: ReactElement[] = [
                 id="para-practice-question-three"
                 blockId="practice-question-three"
             >
-                You have 1 pencil in your bag and your friend gives you 4 more. How many pencils do you have altogether? 1 + 4 ={" "}
+                You have 4 crayons and your teacher gives you 3 more. How many crayons do you have altogether? 4 + 3 ={" "}
                 <InlineFeedback
                     varName="practiceAnswer3"
-                    correctValue="5"
+                    correctValue="7"
                     position="terminal"
-                    successMessage="Excellent! 1 + 4 = 5. You have 5 pencils now"
+                    successMessage="Excellent! 4 + 3 = 7. You have 7 crayons now"
                     failureMessage="Not quite."
-                    hint="1 pencil plus 4 more pencils"
+                    hint="4 crayons plus 3 more crayons"
                 >
                     <InlineClozeInput
                         varName="practiceAnswer3"
-                        correctAnswer="5"
+                        correctAnswer="7"
                         {...clozePropsFromDefinition(getVariableInfo("practiceAnswer3"))}
                     />
                 </InlineFeedback>.
